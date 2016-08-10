@@ -47,4 +47,6 @@ type Peg = String
 type Move = (Peg, Peg)
 
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
-hanoi = undefined
+hanoi 0 _ _ _ = []
+hanoi 1 source target _ = [(source, target)]
+hanoi n source target aux = hanoi (n - 1) source aux target ++ [(source, target)] ++ hanoi (n - 1) aux target source
